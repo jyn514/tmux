@@ -510,7 +510,10 @@ key_bindings_init(void)
 		"bind -n M-MouseDrag1Pane { move-pane -M }",
 
 		/* Mouse wheel up on pane. */
-		"bind -n WheelUpPane { if -F '#{||:#{alternate_on},#{pane_in_mode},#{mouse_any_flag}}' { send -M } { copy-mode -e } }",
+		"bind -n WheelUpPane { if -F '#{||:#{pane_in_mode},#{mouse_any_flag}}' { send -M } { if -F '#{alternate_on}' { send-keys -N 3 Up } { copy-mode -e } } }",
+
+		/* Mouse wheel down on pane. */
+		"bind -n WheelDownPane { if -F '#{||:#{pane_in_mode},#{mouse_any_flag}}' { send -M } { if -F '#{alternate_on}' { send-keys -N 3 Down} } }",
 
 		/* Mouse button 2 down on pane. */
 		"bind -n MouseDown2Pane { select-pane -t=; if -F '#{||:#{pane_in_mode},#{mouse_any_flag}}' { send -M } { paste -p } }",
