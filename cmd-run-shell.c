@@ -168,8 +168,7 @@ cmd_run_shell_exec(struct cmd *self, struct cmdq_item *item)
 	else
 		cdata->cwd = xstrdup(server_client_get_cwd(c, s));
 
-	if (args_has(args, 'E'))
-		cdata->flags |= JOB_SHOWSTDERR;
+        cdata->flags |= JOB_SHOWSTDERR;
 
 	cdata->s = s;
 	if (s != NULL)
